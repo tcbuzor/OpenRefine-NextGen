@@ -1,0 +1,45 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        Preferences
+      </nb-card-header>
+      <nb-card-body>
+
+<!--          <div>-->
+<!--            <h2 id="page-heading">-->
+<!--              <span>Preferences</span>-->
+<!--            </h2>-->
+
+<!--            <br/>-->
+<!--            <div class="table-responsive" *ngIf="preferences">-->
+<!--              <table class="table table-striped">-->
+<!--                <thead>-->
+<!--                <tr>-->
+
+<!--                  <th><span>Name</span></th>-->
+<!--                  <th><span>Value</span></th>-->
+<!--                  <th></th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr *ngFor="let pref of preferences ;">-->
+
+<!--                  <td>{{pref.name}}</td>-->
+<!--                  <td>{{pref.value}}</td>-->
+
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--              </table>-->
+<!--            </div>-->
+<!--          </div>-->
+
+
+        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.google</groupId>
+    <artifactId>openrefine</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>openrefine-web</artifactId>
+
+  <name>openrefine-web</name>
+  <url>http://www.google.orefine.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <node.version>v8.11.1</node.version>
+    <npm.version>6.9.0</npm.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+<!--    <finalName>openrefine-web</finalName>-->
+      <plugins>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>${maven-clean-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${maven-resources-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${maven-surefire-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>${maven-war-plugin.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>com.github.eirslett</groupId>
+          <artifactId>frontend-maven-plugin</artifactId>
+          <version>${frontend-maven-plugin.version}</version>
+          <configuration>
+<!--            <workingDirectory>src</workingDirectory>-->
+            <nodeVersion>${node.version}</nodeVersion>
+            <npmVersion>${npm.version}</npmVersion>
+          </configuration>
+          <executions>
+            <execution>
+              <id>install node and npm</id>
+              <goals>
+                <goal>install-node-and-npm</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>npm install</id>
+              <goals>
+                <goal>npm</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>npm run build</id>
+              <goals>
+                <goal>npm</goal>
+              </goals>
+              <configuration>
+                <arguments>run build</arguments>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+      <resources>
+        <resource>
+          <directory>target/openrefine-web</directory>
+          <targetPath>static</targetPath>
+        </resource>
+      </resources>
+    </build>
+</project>
